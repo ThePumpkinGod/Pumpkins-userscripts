@@ -1,24 +1,29 @@
 // ==UserScript==
 // @name        Pumpkin Better Twitch
-// @version     0.1
+// @version     0.2
 // @description some small changes I like
 // @match       https://www.twitch.tv/*
 // @require     http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js
+// @updateURL   https://github.com/sbh1311/Pumpkins-userscripts/raw/main/Userscripts/Pumpkin%20Better%20Twitch.user.js
+// @downloadURL https://github.com/sbh1311/Pumpkins-userscripts/raw/main/Userscripts/Pumpkin%20Better%20Twitch.user.js
 // ==/UserScript==
 /* globals jQuery, $ */
 
-function showFCtext() {
-var elem = `
+var i = 0;
+while (i <= 1) {
+ let name = ["Art","Following Channels List"];
+ let link = ["https://www.twitch.tv/directory/game/Art","https://www.twitch.tv/directory/following/channels"];
+ var elem = `
 <div class="tw-flex tw-flex-column tw-full-height tw-pd-x-1 tw-xl-pd-x-2">
     <div class="tw-align-self-center tw-flex tw-full-height">
-        <a class="navigation-link tw-interactive" data-a-target="browse-link" data-test-selector="top-nav__browse-link" aria-label="Browse" href="https://www.twitch.tv/directory/following/channels">
+        <a class="navigation-link tw-interactive" data-a-target="browse-link" data-test-selector="top-nav__browse-link" aria-label="Browse" href="${link[i]}">
             <div>
                 <div class="tw-flex-column tw-hide tw-sm-flex">
                     <div class="tw-hide tw-xl-flex">
-                        <p class="tw-font-size-4 tw-line-height-heading tw-semibold tw-title">Following Channels List</p>
+                        <p class="tw-font-size-4 tw-line-height-heading tw-semibold tw-title">${name[i]}</p>
                     </div>
                     <div class="tw-flex tw-xl-hide">
-                        <p class="tw-font-size-5 tw-line-height-heading tw-semibold tw-title tw-title--inherit">Following Channels List</p>
+                        <p class="tw-font-size-5 tw-line-height-heading tw-semibold tw-title tw-title--inherit">${name[i]}</p>
                     </div>
                 </div>
                 <div aria-label="Browse" class="tw-flex tw-pd-x-1 tw-sm-hide">
@@ -31,7 +36,7 @@ var elem = `
                                 </g>
                             </svg>
                         </figure>
-                        <div class="tw-tooltip tw-tooltip--align-center tw-tooltip--down" data-a-target="tw-tooltip-label" role="tooltip" id="e5ed1fdd8371d93862b6813d69052621">Following Channels List</div>
+                        <div class="tw-tooltip tw-tooltip--align-center tw-tooltip--down" data-a-target="tw-tooltip-label" role="tooltip" id="e5ed1fdd8371d93862b6813d69052621">${name[i]}</div>
                     </div>
                 </div>
             </div>
@@ -40,7 +45,17 @@ var elem = `
     <div class="navigation-link__indicator-container"></div>
 </div>
 `
-  //$('div[class="tw-align-items-stretch tw-flex tw-flex-grow-1 tw-flex-nowrap tw-flex-shrink-1 tw-full-width tw-justify-content-start"]').append(elem);
-    $(elem).insertAfter('div[class="navigation-link__left-border tw-mg-t-1"]');
+ $(elem).insertAfter('div[class="navigation-link__left-border tw-mg-t-1"]');
+ i++;
 }
-showFCtext();
+var del = document.querySelectorAll('div[class="tw-flex tw-flex-row tw-full-height tw-justify-content-between"] > div[class="tw-flex tw-flex-column tw-full-height tw-pd-x-1 tw-xl-pd-x-2"]') // gets the list of all the buttons in the hotbar
+$(del[4]).remove(); // remove number 5
+$(del[5]).remove(); // remove number 6
+
+// removes the featured content
+$(document).ready(function() {
+    if ($('div[class="front-page-carousel tw-pd-t-2 tw-pd-x-3"]').length > 0) {
+    $('div[class="front-page-carousel tw-pd-t-2 tw-pd-x-3"]').remove();
+    }
+});
+
