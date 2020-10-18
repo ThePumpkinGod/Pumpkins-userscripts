@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Pumpkin Better Twitch
-// @version     0.2
+// @version     0.3
 // @description some small changes I like
 // @match       https://www.twitch.tv/*
 // @require     http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js
@@ -9,6 +9,8 @@
 // ==/UserScript==
 /* globals jQuery, $ */
 
+
+// changes the twitch hotbar on top to remove music and esport and add art and Following Channels List
 var i = 0;
 while (i <= 1) {
  let name = ["Art","Following Channels List"];
@@ -49,6 +51,7 @@ while (i <= 1) {
  i++;
 }
 var del = document.querySelectorAll('div[class="tw-flex tw-flex-row tw-full-height tw-justify-content-between"] > div[class="tw-flex tw-flex-column tw-full-height tw-pd-x-1 tw-xl-pd-x-2"]') // gets the list of all the buttons in the hotbar
+
 $(del[4]).remove(); // remove number 5
 $(del[5]).remove(); // remove number 6
 
@@ -59,3 +62,20 @@ $(document).ready(function() {
     }
 });
 
+// auto claim points made by : https://greasyfork.org/en/users/310437
+let MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
+let claiming = false;
+if (MutationObserver) console.log('Auto claimer is enabled.');
+let observer = new MutationObserver(e => {
+    let bonus = document.querySelector('.claimable-bonus__icon');
+    if (bonus && !claiming) {
+        bonus.click();
+        let date = new Date();
+        claiming = true;
+        setTimeout(() => {
+            //console.log('Claimed at '+date);
+            claiming = false;
+        }, Math.random() * 1000 + 2000);
+    }
+});
+observer.observe(document.body, {childList: true, subtree: true});
