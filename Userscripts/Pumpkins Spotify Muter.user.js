@@ -5,8 +5,8 @@
 // @description  Automatically mute spotify when an ad comes on and play a song insterd
 // @author       ThePumpkinGod
 // @match        https://open.spotify.com/*
-// @updateURL   https://github.com/sbh1311/Pumpkins-userscripts/raw/main/Userscripts/Spotify%20Muter.user.js
-// @downloadURL https://github.com/sbh1311/Pumpkins-userscripts/raw/main/Userscripts/Spotify%20Muter.user.js
+// @updateURL   https://github.com/sbh1311/Pumpkins-userscripts/raw/main/Userscripts/Pumpkins%20Spotify%20Muter.user.js
+// @downloadURL https://github.com/sbh1311/Pumpkins-userscripts/raw/main/Userscripts/Pumpkins%20Spotify%20Muter.user.js
 // ==/UserScript==
 
 (function() {
