@@ -14,7 +14,7 @@ var del = document.querySelectorAll('div[class="tw-flex tw-flex-row tw-full-heig
 // clear the hotbar
 $(del[2]).remove();//music
 $(del[3]).remove();//esport
-//$('div[class="tw-animated-glitch-logo tw-inline-flex tw-pd-05"]').remove(); // icon
+$('div[class="tw-animated-glitch-logo tw-inline-flex tw-pd-05"]').remove(); // icon
 
 var i = 0;
 var elemtext;var elemline;var elemafter;var name;var link;
