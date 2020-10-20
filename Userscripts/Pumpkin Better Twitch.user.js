@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Pumpkin Better Twitch
-// @version     0.3
+// @version     0.4
 // @description some small changes I like
 // @match       https://www.twitch.tv/*
 // @require     http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js
@@ -9,13 +9,22 @@
 // ==/UserScript==
 /* globals jQuery, $ */
 
+var del = document.querySelectorAll('div[class="tw-flex tw-flex-row tw-full-height tw-justify-content-between"] > div[class="tw-flex tw-flex-column tw-full-height tw-pd-x-1 tw-xl-pd-x-2"]') // gets the list of all the buttons in the hotbar
 
-// changes the twitch hotbar on top to remove music and esport and add art and Following Channels List
+// clear the hotbar
+$(del[2]).remove();//music
+$(del[3]).remove();//esport
+//$('div[class="tw-animated-glitch-logo tw-inline-flex tw-pd-05"]').remove(); // icon
+
 var i = 0;
+var elemtext;var elemline;var elemafter;var name;var link;
+
+// adds Art and Following Channels List tabs
 while (i <= 1) {
- let name = ["Art","Following Channels List"];
- let link = ["https://www.twitch.tv/directory/game/Art","https://www.twitch.tv/directory/following/channels"];
- var elem = `
+ name = ["Art","Following Channels List"];
+ link = ["https://www.twitch.tv/directory/game/Art","https://www.twitch.tv/directory/following/channels"];
+
+elemtext = `
 <div class="tw-flex tw-flex-column tw-full-height tw-pd-x-1 tw-xl-pd-x-2">
     <div class="tw-align-self-center tw-flex tw-full-height">
         <a class="navigation-link tw-interactive" data-a-target="browse-link" data-test-selector="top-nav__browse-link" aria-label="Browse" href="${link[i]}">
@@ -47,13 +56,48 @@ while (i <= 1) {
     <div class="navigation-link__indicator-container"></div>
 </div>
 `
- $(elem).insertAfter('div[class="navigation-link__left-border tw-mg-t-1"]');
- i++;
-}
-var del = document.querySelectorAll('div[class="tw-flex tw-flex-row tw-full-height tw-justify-content-between"] > div[class="tw-flex tw-flex-column tw-full-height tw-pd-x-1 tw-xl-pd-x-2"]') // gets the list of all the buttons in the hotbar
+ $(elemtext).insertBefore('div[class="tw-align-items-center tw-flex tw-full-height tw-pd-x-1"]');
 
-$(del[4]).remove(); // remove number 5
-$(del[5]).remove(); // remove number 6
+i++;
+}
+
+// adds the icon but this time redricts you to the twitch website
+var elemicon = `
+<a class="tw-interactive tw-link" data-a-target="home-link" aria-label="Twitch Home" href="https://www.twitch.tv/">
+    <div class="top-nav__home-link-logo">
+        <div class="tw-animated-glitch-logo tw-inline-flex tw-pd-05">
+            <figure class="tw-inline-flex">
+                <svg overflow="visible" width="40px" height="40px" version="1.1" viewBox="0 0 40 40" x="0px" y="0px" class="ScSvg-cdc1ai-0 hrdQOA">
+                    <g>
+                        <polygon points="13 8 8 13 8 31 14 31 14 36 19 31 23 31 32 22 32 8" class="ScBody-cdc1ai-1 efRGdn">
+                            <animate dur="150ms" begin="indefinite" fill="freeze" calcMode="spline" keyTimes="0; 1" keySplines="0.25 0.1 0.25 1" attributeName="points" from="13 8 8 13 8 31 14 31 14 36 19 31 23 31 32 22 32 8" to="16 5 8 13 8 31 14 31 14 36 19 31 23 31 35 19 35 5"></animate>
+                            <animate dur="250ms" begin="indefinite" fill="freeze" calcMode="spline" keyTimes="0; 1" keySplines="0.25 0.1 0.25 1" attributeName="points" from="16 5 8 13 8 31 14 31 14 36 19 31 23 31 35 19 35 5" to="13 8 8 13 8 31 14 31 14 36 19 31 23 31 32 22 32 8"></animate>
+                            <animate dur="50ms" begin="indefinite" fill="freeze" calcMode="spline" keyTimes="0; 1" keySplines="0.25 0.1 0.25 1" attributeName="points" to="13 8 8 13 8 31 14 31 14 36 19 31 23 31 32 22 32 8" from="16 5 8 13 8 31 14 31 14 36 19 31 23 31 35 19 35 5"></animate>
+                            <animate dur="75ms" begin="indefinite" fill="freeze" calcMode="spline" keyTimes="0; 1" keySplines="0.25 0.1 0.25 1" attributeName="points" to="16 5 8 13 8 31 14 31 14 36 19 31 23 31 35 19 35 5" from="13 8 8 13 8 31 14 31 14 36 19 31 23 31 32 22 32 8"></animate>
+                        </polygon>
+                        <polygon points="26 25 30 21 30 10 14 10 14 25 18 25 18 29 22 25" class="ScFace-cdc1ai-2 jvqeMd">
+                            <animateTransform dur="150ms" begin="indefinite" fill="freeze" calcMode="spline" keyTimes="0; 1" keySplines="0.25 0.1 0.25 1" attributeName="transform" type="translate" from="0 0" to="3 -3"></animateTransform>
+                            <animateTransform dur="250ms" begin="indefinite" fill="freeze" calcMode="spline" keyTimes="0; 1" keySplines="0.25 0.1 0.25 1" attributeName="transform" type="translate" from="3 -3" to="0 0"></animateTransform>
+                            <animateTransform dur="50ms" begin="indefinite" fill="freeze" calcMode="spline" keyTimes="0; 1" keySplines="0.25 0.1 0.25 1" attributeName="transform" type="translate" from="3 -3" to="0 0"></animateTransform>
+                            <animateTransform dur="75ms" begin="indefinite" fill="freeze" calcMode="spline" keyTimes="0; 1" keySplines="0.25 0.1 0.25 1" attributeName="transform" type="translate" from="0 0" to="3 -3"></animateTransform>
+                        </polygon>
+                        <g class="ScEyes-cdc1ai-3 jbPqGp">
+                            <path d="M20,14 L22,14 L22,20 L20,20 L20,14 Z M27,14 L27,20 L25,20 L25,14 L27,14 Z" class="ScBody-cdc1ai-1 efRGdn">
+                                <animateTransform dur="150ms" begin="indefinite" fill="freeze" calcMode="spline" keyTimes="0; 1" keySplines="0.25 0.1 0.25 1" attributeName="transform" type="translate" from="0 0" to="3 -3"></animateTransform>
+                                <animateTransform dur="250ms" begin="indefinite" fill="freeze" calcMode="spline" keyTimes="0; 1" keySplines="0.25 0.1 0.25 1" attributeName="transform" type="translate" from="3 -3" to="0 0"></animateTransform>
+                                <animateTransform dur="50ms" begin="indefinite" fill="freeze" calcMode="spline" keyTimes="0; 1" keySplines="0.25 0.1 0.25 1" attributeName="transform" type="translate" from="3 -3" to="0 0"></animateTransform>
+                                <animateTransform dur="75ms" begin="indefinite" fill="freeze" calcMode="spline" keyTimes="0; 1" keySplines="0.25 0.1 0.25 1" attributeName="transform" type="translate" from="0 0" to="3 -3"></animateTransform>
+                            </path>
+                        </g>
+                    </g>
+                </svg>
+            </figure>
+        </div>
+    </div>
+</a>
+`;
+var iconbefore = document.querySelectorAll('div[class="tw-flex tw-flex-row tw-full-height tw-justify-content-between"] > div[class="tw-flex tw-flex-column tw-full-height tw-pd-x-1 tw-xl-pd-x-2"]');
+$(elemicon).insertBefore(iconbefore[0]);
 
 // removes the featured content
 $(document).ready(function() {
@@ -73,7 +117,6 @@ let observer = new MutationObserver(e => {
         let date = new Date();
         claiming = true;
         setTimeout(() => {
-            //console.log('Claimed at '+date);
             claiming = false;
         }, Math.random() * 1000 + 2000);
     }
