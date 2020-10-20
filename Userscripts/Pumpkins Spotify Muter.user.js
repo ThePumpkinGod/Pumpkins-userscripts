@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Pumpkins Spotify Muter
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.2
 // @description  Automatically mute spotify when an ad comes on and play a song insterd
 // @author       ThePumpkinGod
 // @match        https://open.spotify.com/*
@@ -12,7 +12,7 @@
 (function() {
     'use strict';
     // gets the song eeeeaaaoo and set the volume
-    var audio = new Audio('https://cdn.glitch.com/8302b443-7a87-4357-9e4f-9a5e26be2093%2FEEEAAAOOO.mp4?v=1603112309566');
+    var audio = new Audio('https://cdn.glitch.com/8302b443-7a87-4357-9e4f-9a5e26be2093%2Fbensound-theelevatorbossanova.mp3?v=1603202989299');
     audio.volume = 0.1;
 
     // the types of ads i know of
