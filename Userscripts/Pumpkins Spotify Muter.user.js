@@ -9,6 +9,7 @@
 // @downloadURL https://github.com/sbh1311/Pumpkins-userscripts/raw/main/Userscripts/Pumpkins%20Spotify%20Muter.user.js
 // ==/UserScript==
 
+console.log("started");
 (function() {
     'use strict';
     // gets the song eeeeaaaoo and set the volume
@@ -21,7 +22,7 @@
             return document.title.startsWith("Advertisement") || (document.title.startsWith("Spotify") && document.title.endsWith("Spotify"))
         },
         get muteElm () {
-            return document.querySelector(".volume-bar__icon")
+            return document.querySelector(`button[class="volume-bar__icon-button control-button"]`)
         },
         get muted () {
             return this.muteElm.getAttribute("aria-label") === "Unmute"
