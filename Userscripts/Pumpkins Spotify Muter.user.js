@@ -37,7 +37,7 @@ console.log("started");
 
     // waits for and ad or and ad that ended
     new MutationObserver(function () {
-        if (spotifyUtils.adPlaying){
+        if (spotifyUtils.adPlaying && !window.location.href.includes("show")){
             spotifyUtils.mute()
                 audio.play();
         }else{
@@ -49,3 +49,11 @@ console.log("started");
 
     window.spotifyUtils = spotifyUtils
 })();
+
+/*
+setTimeout(function() {
+console.log("works?")
+var button_upgrade = document.querySelectorAll(`button`);
+$(button_upgrade[3]).text("Premium!");
+}, 5000);*/
+  
