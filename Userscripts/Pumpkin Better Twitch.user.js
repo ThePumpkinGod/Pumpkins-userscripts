@@ -9,12 +9,12 @@
 // ==/UserScript==
 /* globals jQuery, $ */
 
-var del = document.querySelectorAll('div[class="tw-flex tw-flex-row tw-full-height tw-justify-content-between"] > div[class="tw-flex tw-flex-column tw-full-height tw-pd-x-1 tw-xl-pd-x-2"]') // gets the list of all the buttons in the hotbar
+var del = document.querySelectorAll('div[class="sc-AxjAm fqUaXq"] > div > div[class="sc-AxjAm kDwuXz"] > div') // gets the list of all the buttons in the hotbar
 
 // clear the hotbar
-$(del[2]).remove();//music
+$(del[4]).remove();//music
 $(del[3]).remove();//esport
-$('a[class="tw-link"]').remove(); // icon
+$('a[data-a-target="home-link"]').remove(); // icon
 
 var i = 0;
 var elemtext;var elemline;var elemafter;var name;var link;
@@ -56,32 +56,32 @@ elemtext = `
     <div class="navigation-link__indicator-container"></div>
 </div>
 `
- $(elemtext).insertBefore('div[class="tw-align-items-center tw-flex tw-full-height tw-pd-x-1"]');
+ $(elemtext).insertAfter(del[2]);
 
 i++;
 }
 
-// adds the icon but this time redricts you to the twitch website
+// adds the icon but this time redricts you to the twitch website 
 var elemicon = `
-<a data-a-target="home-link" aria-label="Twitch Home" class="tw-link" href="https://www.twitch.tv/">
+<a data-a-target="home-link" aria-label="Twitch Home" class="ScCoreLink-udwpw5-0 FXIKh tw-link" href="https://www.twitch.tv/">
     <div class="ScLogoContainer-cdc1ai-0 fmatTN tw-animated-glitch-logo">
         <figure class="ScFigure-cdc1ai-1 fJrzHp">
             <svg overflow="visible" width="40px" height="40px" version="1.1" viewBox="0 0 40 40" x="0px" y="0px" class="ScSvg-cdc1ai-2 fMOUeO">
                 <g>
-                    <polygon points="13 8 8 13 8 31 14 31 14 36 19 31 23 31 32 22 32 8" class="ScBody-cdc1ai-3 iMXlFV">
+                    <polygon points="13 8 8 13 8 31 14 31 14 36 19 31 23 31 32 22 32 8" class="ScBody-cdc1ai-3 hUdDFB">
                         <animate dur="150ms" begin="indefinite" fill="freeze" calcMode="spline" keyTimes="0; 1" keySplines="0.25 0.1 0.25 1" attributeName="points" from="13 8 8 13 8 31 14 31 14 36 19 31 23 31 32 22 32 8" to="16 5 8 13 8 31 14 31 14 36 19 31 23 31 35 19 35 5"></animate>
                         <animate dur="250ms" begin="indefinite" fill="freeze" calcMode="spline" keyTimes="0; 1" keySplines="0.25 0.1 0.25 1" attributeName="points" from="16 5 8 13 8 31 14 31 14 36 19 31 23 31 35 19 35 5" to="13 8 8 13 8 31 14 31 14 36 19 31 23 31 32 22 32 8"></animate>
                         <animate dur="50ms" begin="indefinite" fill="freeze" calcMode="spline" keyTimes="0; 1" keySplines="0.25 0.1 0.25 1" attributeName="points" to="13 8 8 13 8 31 14 31 14 36 19 31 23 31 32 22 32 8" from="16 5 8 13 8 31 14 31 14 36 19 31 23 31 35 19 35 5"></animate>
                         <animate dur="75ms" begin="indefinite" fill="freeze" calcMode="spline" keyTimes="0; 1" keySplines="0.25 0.1 0.25 1" attributeName="points" to="16 5 8 13 8 31 14 31 14 36 19 31 23 31 35 19 35 5" from="13 8 8 13 8 31 14 31 14 36 19 31 23 31 32 22 32 8"></animate>
                     </polygon>
-                    <polygon points="26 25 30 21 30 10 14 10 14 25 18 25 18 29 22 25" class="ScFace-cdc1ai-4 eKFQBH">
+                    <polygon points="26 25 30 21 30 10 14 10 14 25 18 25 18 29 22 25" class="ScFace-cdc1ai-4 eAYKp">
                         <animateTransform dur="150ms" begin="indefinite" fill="freeze" calcMode="spline" keyTimes="0; 1" keySplines="0.25 0.1 0.25 1" attributeName="transform" type="translate" from="0 0" to="3 -3"></animateTransform>
                         <animateTransform dur="250ms" begin="indefinite" fill="freeze" calcMode="spline" keyTimes="0; 1" keySplines="0.25 0.1 0.25 1" attributeName="transform" type="translate" from="3 -3" to="0 0"></animateTransform>
                         <animateTransform dur="50ms" begin="indefinite" fill="freeze" calcMode="spline" keyTimes="0; 1" keySplines="0.25 0.1 0.25 1" attributeName="transform" type="translate" from="3 -3" to="0 0"></animateTransform>
                         <animateTransform dur="75ms" begin="indefinite" fill="freeze" calcMode="spline" keyTimes="0; 1" keySplines="0.25 0.1 0.25 1" attributeName="transform" type="translate" from="0 0" to="3 -3"></animateTransform>
                     </polygon>
                     <g class="ScEyes-cdc1ai-5 itWjTv">
-                        <path d="M20,14 L22,14 L22,20 L20,20 L20,14 Z M27,14 L27,20 L25,20 L25,14 L27,14 Z" class="ScBody-cdc1ai-3 iMXlFV">
+                        <path d="M20,14 L22,14 L22,20 L20,20 L20,14 Z M27,14 L27,20 L25,20 L25,14 L27,14 Z" class="ScBody-cdc1ai-3 hUdDFB">
                             <animateTransform dur="150ms" begin="indefinite" fill="freeze" calcMode="spline" keyTimes="0; 1" keySplines="0.25 0.1 0.25 1" attributeName="transform" type="translate" from="0 0" to="3 -3"></animateTransform>
                             <animateTransform dur="250ms" begin="indefinite" fill="freeze" calcMode="spline" keyTimes="0; 1" keySplines="0.25 0.1 0.25 1" attributeName="transform" type="translate" from="3 -3" to="0 0"></animateTransform>
                             <animateTransform dur="50ms" begin="indefinite" fill="freeze" calcMode="spline" keyTimes="0; 1" keySplines="0.25 0.1 0.25 1" attributeName="transform" type="translate" from="3 -3" to="0 0"></animateTransform>
@@ -94,18 +94,20 @@ var elemicon = `
     </div>
 </a>
 `;
-var iconbefore = document.querySelectorAll('div[class="tw-flex tw-flex-row tw-full-height tw-justify-content-between"] > div[class="tw-flex tw-flex-column tw-full-height tw-pd-x-1 tw-xl-pd-x-2"]');
-$(elemicon).insertBefore(iconbefore[0]);
+  
+$(elemicon).insertBefore(`div[class="sc-AxjAm fqUaXq"]`); // adds the icon before the hotbar
 
 // removes the featured content
 function removeFeatured(){
 $(document).ready(function() {
-    if ($('div[class="front-page-carousel tw-pd-t-2 tw-pd-x-3"]').length > 0) {
-    $('div[class="front-page-carousel tw-pd-t-2 tw-pd-x-3"]').remove();
+    if ($('div[class="sc-AxjAm fKEwav front-page-carousel"]').length > 0) {  // same tag as below v
+    $('div[class="sc-AxjAm fKEwav front-page-carousel"]').remove();          // same tag as above ^
     }
 });
 }
 removeFeatured();
+  
+
 // auto claim points made by : https://greasyfork.org/en/users/310437
 let MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
 let claiming = false;
